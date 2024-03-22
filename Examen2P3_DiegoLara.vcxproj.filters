@@ -18,5 +18,19 @@
     <ClCompile Include="Examen2P3_DiegoLara.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mago.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CampamentoMagos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Mago.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CampamentoMagos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
