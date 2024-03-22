@@ -56,7 +56,7 @@ void CampamentoMagos::GuardarMagos()
 		exit(1);
 	}
 	for (const Mago* mago : magos) {
-		archivo.write(reinterpret_cast<const char*>(&mago), sizeof(Mago));
+		archivo.write(reinterpret_cast<const char*>(mago), sizeof(Mago));
 	}
 	archivo.close();
 }
@@ -70,12 +70,11 @@ void CampamentoMagos::CargarMagos()
 		exit(1);
 	}
 	Mago* magoTemp = new Mago();
-	while (!archivo.eof()) {
-		archivo.read(reinterpret_cast<char*>(&magoTemp), sizeof(Mago));
-		if (!archivo.eof()) {
-			magos.push_back(magoTemp);
-		}
+	while (archivo.read(reinterpret_cast<char*>(magoTemp), sizeof(Mago))) {
+		magos.push_back(magoTemp);
+		magoTemp = new Mago();
 	}
+	//delete magoTemp;
 	archivo.close();
 
 }

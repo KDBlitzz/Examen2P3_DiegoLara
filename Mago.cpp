@@ -4,7 +4,7 @@ Mago::Mago()
 {
 }
 
-Mago::Mago(string Nombre, string tipo, int poder, int velocidad, int resistencia, int ataque, int vida)
+Mago::Mago(string Nombre, string tipo, int poder, int velocidad, int resistencia, int ataque)
 {
 	this->Nombre = Nombre;
 	this->tipoDeMago = tipo;
@@ -12,11 +12,18 @@ Mago::Mago(string Nombre, string tipo, int poder, int velocidad, int resistencia
 	this->velocidad = velocidad;
 	this->resistencia = resistencia;
 	this->ataque = ataque;
-	this->vida = vida;
+	this->vida = 100;
 }
 
 Mago::~Mago()
 {
+	this->Nombre = "";
+	this->tipoDeMago = "";
+	this->poder = 0;
+	this->velocidad = 0;
+	this->resistencia = 0;
+	this->ataque = 0;
+	this->vida = 0;
 }
 
 string Mago::getNombre()
@@ -98,4 +105,5 @@ void Mago::to_String()
 	cout << "Resistencia: " << this->resistencia << endl;
 	cout << "Ataque: " << this->ataque << endl;
 	cout << "Vida: " << this->vida << endl;
+	cout << endl;
 }

@@ -16,7 +16,7 @@ private:
 	int vida;
 public:
 	Mago();
-	Mago(string Nombre, string tipo, int poder, int velocidad, int resistencia, int ataque, int vida);
+	Mago(string Nombre, string tipo, int poder, int velocidad, int resistencia, int ataque);
 	~Mago();
 	string getNombre();
 	void setNombre(string nombre);

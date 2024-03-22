@@ -11,7 +11,6 @@ void ejercicio_1() {
 	int velocidad = 0;
 	int resistencia = 0;
 	int ataque = 0;
-	int vida = 0;
 	int option = 0;
 	while (ejer1) {
 		cout << "1. Agregar Mago" << endl;
@@ -115,7 +114,7 @@ void ejercicio_1() {
 				}
 
 			}
-			administrador->getMagos().push_back(new Mago(nombre, tipoMago, poder, velocidad, resistencia, ataque, vida));
+			administrador->AgregarMago(new Mago(nombre, tipoMago, poder, velocidad, resistencia, ataque));
 			cout << "Mago agregado exitosamente." << endl;
 			break;
 		case 2:
