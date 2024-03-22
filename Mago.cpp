@@ -96,7 +96,7 @@ void Mago::setVida(int vida)
 	this->vida = vida;
 }
 
-void Mago::to_String()
+void Mago::to_String() // to string
 {
 	cout << "Nombre: " << this->Nombre << endl;
 	cout << "Tipo de Mago: " << this->tipoDeMago << endl;

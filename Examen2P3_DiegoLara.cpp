@@ -14,7 +14,7 @@ void ejercicio_1() {
 	int resistencia = 0;
 	int ataque = 0;
 	int option = 0;
-	while (ejer1) {
+	while (ejer1) { 
 		cout << "1. Agregar Mago" << endl;
 		cout << "2. Eliminar Mago" << endl;
 		cout << "3. Listar Magos" << endl;
@@ -24,7 +24,7 @@ void ejercicio_1() {
 		cout << "7. Salir" << endl;
 		cin >> option;
 		switch (option) {
-		case 1:
+		case 1: // Agregar mago
 			cout << "Ingrese el nombre del mago: " << endl;
 			cin >> nombre;
 			cout << "Ingrese el tipo de mago(1. Fuego, 2. Electrico, 3. Hielo): " << endl;
@@ -119,7 +119,7 @@ void ejercicio_1() {
 			administrador->AgregarMago(new Mago(nombre, tipoMago, poder, velocidad, resistencia, ataque));
 			cout << "Mago agregado exitosamente." << endl;
 			break;
-		case 2:
+		case 2: // Eliminar magos
 			if (administrador->getMagos().empty())
 			{
 				cout << "No hay magos, agregue o cargue el archivo binario para que allan magos." << endl;
@@ -136,7 +136,7 @@ void ejercicio_1() {
 				cout << "Mago eliminado exitosamente" << endl;
 			}
 			break;
-		case 3:
+		case 3: // Listar magos
 			if (administrador->getMagos().empty())
 			{
 				cout << "No hay magos, agregue o cargue el archivo binario para que allan magos." << endl;
@@ -145,7 +145,7 @@ void ejercicio_1() {
 				administrador->ListarMagos();
 			}
 			break;
-		case 4:
+		case 4: // Guardar magos
 			if (administrador->getMagos().empty())
 			{
 				cout << "No hay magos, agregue o cargue el archivo binario para que allan magos." << endl;
@@ -155,11 +155,11 @@ void ejercicio_1() {
 				cout << "Magos guardados exitosamente." << endl;
 			}
 			break;
-		case 5:
+		case 5: // Cargar magos
 			administrador->CargarMagos();
 			cout << "Magos cargados exitosamente" << endl;
 			break;
-		case 6:
+		case 6: // Simulacion
 			if (administrador->getMagos().empty())
 			{
 				cout << "No hay magos, agregue o cargue el archivo binario para que allan magos." << endl;
@@ -187,13 +187,14 @@ void ejercicio_1() {
 			break;
 		case 7:
 			ejer1 = false;
+			delete administrador; // eliminar memoria
 			break;
 		default:
 			cout << "Opcion Invalida" << endl;
 		}
 	}
 }
-void menu() {
+void menu() { // Menu
 	bool menu = true;
 	int optionMenu = 0;
 	while (menu) {
