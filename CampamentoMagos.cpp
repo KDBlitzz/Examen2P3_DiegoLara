@@ -78,6 +78,111 @@ void CampamentoMagos::CargarMagos()
 	archivo.close();
 
 }
-void CampamentoMagos::SimularBatalla()
+void CampamentoMagos::SimularBatalla(int player1, int player2)
 {
+	double conversion = 0.0;
+	double poderAtacante = 0.0;
+	double totalDamage = 0.0;
+	int random = 0;
+	int contador = 1;
+	bool turnoDeJugador1 = false;
+	bool turnoDeJugador2 = false;
+	cout << "¡Comienza la batalla entre " << magos[player1]->getNombre() << " y " << magos[player2]->getNombre() << " !" << endl << endl;
+	cout << "Turno: " << contador << endl;
+	if (magos[player1]->getVelocidad() > magos[player2]->getVelocidad()) {
+		conversion = (magos[player1]->getAtaque() - (magos[player2]->getResistencia() / 2));
+		poderAtacante = (magos[player1]->getPoder() / 100);
+		totalDamage = conversion * poderAtacante;
+		magos[player2]->setVida(magos[player2]->getVida() - totalDamage);
+		random = 5 + (rand() % 10);
+		magos[player1]->setAtaque(magos[player1]->getAtaque() + random);
+		cout << magos[player1]->getNombre() << " ataca a " << magos[player2]->getNombre() << " causando " << totalDamage << " de daño." << endl;
+		cout << "Vida de " << magos[player2]->getNombre() << ": " << magos[player2]->getVida();
+		contador++;
+		turnoDeJugador2 = true;
+		turnoDeJugador1 = false;
+	}
+	else if(magos[player1]->getVelocidad() < magos[player2]->getVelocidad()){
+		conversion = (magos[player2]->getAtaque() - (magos[player1]->getResistencia() / 2));
+		poderAtacante = (magos[player2]->getPoder() / 100);
+		totalDamage = conversion * poderAtacante;
+		magos[player1]->setVida(magos[player1]->getVida() - totalDamage);
+		random = 5 + (rand() % 10);
+		magos[player2]->setAtaque(magos[player2]->getAtaque() + random);
+		cout << magos[player2]->getNombre() << " ataca a " << magos[player1]->getNombre() << " causando " << totalDamage << " de daño." << endl;
+		cout << "Vida de " << magos[player1]->getNombre() << ": " << magos[player1]->getVida();
+		contador++;
+		turnoDeJugador2 = false;
+		turnoDeJugador1 = true;
+	}
+	else if (magos[player1]->getVelocidad() == magos[player2]->getVelocidad()) {
+		if (magos[player1]->getPoder() > magos[player2]->getPoder())
+		{
+			conversion = (magos[player1]->getAtaque() - (magos[player2]->getResistencia() / 2));
+			poderAtacante = (magos[player1]->getPoder() / 100);
+			totalDamage = conversion * poderAtacante;
+			magos[player2]->setVida(magos[player2]->getVida() - totalDamage);
+			random = 5 + (rand() % 10);
+			magos[player1]->setAtaque(magos[player1]->getAtaque() + random);
+			cout << magos[player1]->getNombre() << " ataca a " << magos[player2]->getNombre() << " causando " << totalDamage << " de daño." << endl;
+			cout << "Vida de " << magos[player2]->getNombre() << ": " << magos[player2]->getVida();
+			contador++;
+			turnoDeJugador2 = true;
+			turnoDeJugador1 = false;
+		}
+		else if (magos[player1]->getPoder() < magos[player2]->getPoder()) {
+			conversion = (magos[player2]->getAtaque() - (magos[player1]->getResistencia() / 2));
+			poderAtacante = (magos[player2]->getPoder() / 100);
+			totalDamage = conversion * poderAtacante;
+			magos[player1]->setVida(magos[player1]->getVida() - totalDamage);
+			random = 5 + (rand() % 10);
+			magos[player2]->setAtaque(magos[player2]->getAtaque() + random);
+			cout << magos[player2]->getNombre() << " ataca a " << magos[player1]->getNombre() << " causando " << totalDamage << " de daño." << endl;
+			cout << "Vida de " << magos[player1]->getNombre() << ": " << magos[player1]->getVida();
+			contador++;
+			turnoDeJugador2 = false;
+			turnoDeJugador1 = true;
+		}
+	}
+	while (magos[player1]->getVida() > 0 && magos[player2]->getVida() > 0) {
+		cout << "Turno: " << contador << endl;
+		if (turnoDeJugador1)
+		{
+			conversion = (magos[player1]->getAtaque() - (magos[player2]->getResistencia() / 2));
+			poderAtacante = (magos[player1]->getPoder() / 100);
+			totalDamage = conversion * poderAtacante;
+			magos[player2]->setVida(magos[player2]->getVida() - totalDamage);
+			random = 5 + (rand() % 10);
+			magos[player1]->setAtaque(magos[player1]->getAtaque() + random);
+			cout << magos[player1]->getNombre() << " ataca a " << magos[player2]->getNombre() << " causando " << totalDamage << " de daño." << endl;
+			cout << "Vida de " << magos[player2]->getNombre() << ": " << magos[player2]->getVida();
+			contador++;
+			turnoDeJugador2 = true;
+			turnoDeJugador1 = false;
+		}
+		if (turnoDeJugador2)
+		{
+			conversion = (magos[player2]->getAtaque() - (magos[player1]->getResistencia() / 2));
+			poderAtacante = (magos[player2]->getPoder() / 100);
+			totalDamage = conversion * poderAtacante;
+			magos[player1]->setVida(magos[player1]->getVida() - totalDamage);
+			random = 5 + (rand() % 10);
+			magos[player2]->setAtaque(magos[player2]->getAtaque() + random);
+			cout << magos[player2]->getNombre() << " ataca a " << magos[player1]->getNombre() << " causando " << totalDamage << " de daño." << endl;
+			cout << "Vida de " << magos[player1]->getNombre() << ": " << magos[player1]->getVida();
+			contador++;
+			turnoDeJugador2 = false;
+			turnoDeJugador1 = true;
+		}
+	}
+	cout << "¡La Batalla ha terminado!" << endl;
+	if (magos[player1]->getVida() < 0)
+	{
+		cout << magos[player2]->getNombre() << " es el ganador." << endl;
+	}
+	if (magos[player2]->getVida() < 0)
+	{
+		cout << magos[player1]->getNombre() << " es el ganador." << endl;
+	}
+	srand(time(NULL));
 }

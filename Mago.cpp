@@ -17,13 +17,13 @@ Mago::Mago(string Nombre, string tipo, int poder, int velocidad, int resistencia
 
 Mago::~Mago()
 {
-	this->Nombre = "";
+	/*this->Nombre = "";
 	this->tipoDeMago = "";
 	this->poder = 0;
 	this->velocidad = 0;
 	this->resistencia = 0;
 	this->ataque = 0;
-	this->vida = 0;
+	this->vida = 0;*/
 }
 
 string Mago::getNombre()

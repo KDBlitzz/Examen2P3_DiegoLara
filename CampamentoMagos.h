@@ -1,5 +1,7 @@
 #pragma once
 #include "Mago.h"
+#include<cstdlib>
+#include<ctime>
 class CampamentoMagos
 {
 private:
@@ -15,6 +17,6 @@ public:
 	void ListarMagos();
 	void GuardarMagos();
 	void CargarMagos();
-	void SimularBatalla();
+	void SimularBatalla(int player1, int player2);
 };
 

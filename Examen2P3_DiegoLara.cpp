@@ -6,6 +6,8 @@ void ejercicio_1() {
 	bool ejer1 = true;
 	string nombre = "";
 	string tipoMago = "";
+	int jugador1 = 0;
+	int jugador2 = 0;
 	int eliminarMago = 0;
 	int poder = 0;
 	int velocidad = 0;
@@ -158,6 +160,30 @@ void ejercicio_1() {
 			cout << "Magos cargados exitosamente" << endl;
 			break;
 		case 6:
+			if (administrador->getMagos().empty())
+			{
+				cout << "No hay magos, agregue o cargue el archivo binario para que allan magos." << endl;
+			}
+			else if (administrador->getMagos().size() < 2) {
+				cout << "Hay 1 mago, se ocupan minimo 2 magos para la simulacion." << endl;
+			}
+			else {
+				cout << "----- SIMULACION DE BATALLA -----" << endl;
+				administrador->ListarMagos();
+				cout << "Seleccione el primer mago: " << endl;
+				cin >> jugador1;
+				while (jugador1 > administrador->getMagos().size() || jugador1 < 0 ) {
+					cout << "Ingrese un indice valido: " << endl;
+					cin >> jugador1;
+				}
+				cout << "Seleccione el segundo mago: " << endl;
+				cin >> jugador2;
+				while (jugador2 > administrador->getMagos().size() || jugador2 < 0) {
+					cout << "Ingrese un indice valido: " << endl;
+					cin >> jugador2;
+				}
+				administrador->SimularBatalla(jugador1-1,jugador2-1);
+			}
 			break;
 		case 7:
 			ejer1 = false;
